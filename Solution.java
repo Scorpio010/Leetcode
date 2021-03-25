@@ -1,27 +1,22 @@
-package leetcode.p94;
+package leetcode.p572;
 
-import java.util.ArrayList;
-import java.util.List;
 public class Solution {
-    public List<Integer> inorderTraversal(TreeNode root) {
-         inorderList.clear();
-         inorder(root);
-         return inorderList;
+    //判断是否为另一个树的子树
+    public boolean isSubtree(TreeNode s, TreeNode t) {
+     if (t==null){
+         return true;
+     }
+     if (s==null){
+         return false;
+     }
+     return isSubtree(s.left,t)||isSubtree(s.right,t)||isSametree(s,t);
     }
-    private List<Integer> inorderList = new ArrayList<>();
-    private void inorder(TreeNode root){
-        if (root == null){
-            return;
+    public boolean isSametree(TreeNode s, TreeNode t){
+        if (s==null&&t==null){
+            return true;
         }
-        inorder(root.left);
-        inorderList.add(root.val);
-        inorder(root.right);
-    }
-
-    public static void main(String[] args) {
-        Solution solution = new Solution();
-
-        solution.inorderTraversal(null);
-        solution.inorderTraversal(null);
+        if (s==null||t==null) return false;
+        if (s.val!=t.val) return false;
+        return isSametree(s.left,t.left)&&isSametree(s.right,t.right);
     }
 }
