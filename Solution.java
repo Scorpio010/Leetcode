@@ -1,41 +1,14 @@
-package leetcode.p236;
+package leetcode.p242;
 
-import java.util.Stack;
+import java.util.Arrays;
 
-public class TreeNode {
-     int val;
-     TreeNode left;
-     TreeNode right;
-     TreeNode(int x) { val = x; }
- }
- public class Solution{
-    public  TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q){
-        if (root==p||root==q) return root;
-        if (root==null) return null;
-        TreeNode left  = lowestCommonAncestor(root.left,p,q);
-        TreeNode right = lowestCommonAncestor(root.right,p,q);
-        if (left!=null&&right!=null) return root;
-        else if (left!=null) return left;
-        else if (right!=null) return right;
-        else return null;
-    }
- }
-public class Solution2 {
-    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-         if (root==p||root==q) return root;
-         if (root==null) return null;
-         TreeNode cur=root;
-         TreeNode last = null;
-        Stack<TreeNode> stack = new Stack<>();
-        while(cur!=null||!stack.isEmpty()){
-            while(cur!=null){
-                stack.push(cur);
-                cur = cur.left;
-            }
-        }
-        TreeNode pop = stack.peek();
-        if (pop.right==null||pop.right==last){
-
-        }
+//给定两个字符串 s 和 t ，编写一个函数来判断 t 是否是 s 的字母异位词。
+public class Solution {
+    public boolean isAnagram(String s, String t) {
+        char[] s1=s.toCharArray();
+        char[] s2=t.toCharArray();
+        Arrays.sort(s1);
+        Arrays.sort(s2);
+        return Arrays.equals(s1,s2);
     }
 }
