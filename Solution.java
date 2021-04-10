@@ -1,14 +1,13 @@
-package leetcode.p242;
+package leetcode.p976;
 
 import java.util.Arrays;
 
-//给定两个字符串 s 和 t ，编写一个函数来判断 t 是否是 s 的字母异位词。
 public class Solution {
-    public boolean isAnagram(String s, String t) {
-        char[] s1=s.toCharArray();
-        char[] s2=t.toCharArray();
-        Arrays.sort(s1);
-        Arrays.sort(s2);
-        return Arrays.equals(s1,s2);
+    public int largestPerimeter(int[] num) {
+        Arrays.sort(num);
+        for (int i = num.length - 1; i >= 2; i--) {
+            if (num[i] < num[i - 1] + num[i - 2]) return num[i]+num[i-1]+num[i-2];
+        }return 0;
     }
+
 }
